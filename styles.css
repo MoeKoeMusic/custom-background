@@ -1,0 +1,71 @@
+/* 背景上传按钮样式 */
+.bg-upload-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(5px) !important;
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  z-index: 2 !important;
+}
+
+.bg-upload-btn:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
+  transform: scale(1.1) !important;
+}
+
+/* 歌单封面上传按钮样式  */
+.cover-upload-btn {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  font-size: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(3px) !important;
+  position: absolute !important;
+  top: 3px !important;
+  right: 3px !important;
+  z-index: 2 !important;
+  opacity: 0 !important;
+}
+
+.cover-upload-btn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+.music-card:hover .cover-upload-btn {
+  opacity: 1 !important;
+}
+
+.profile-header {
+  position: relative !important;
+}
+
+.music-card {
+  position: relative !important;
+}
+
+.bg-file-input,
+.cover-file-input {
+  display: none !important;
+}
