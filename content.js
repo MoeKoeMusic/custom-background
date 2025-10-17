@@ -26,7 +26,22 @@
       
       // 添加封面样式
       Object.keys(savedCovers).forEach(playlistId => {
-        css += `a[href*="listid=${playlistId}"] .album-image { content: url(${savedCovers[playlistId]}) !important; }`;
+        // 处理路径作为ID的特殊情况
+        if (playlistId === '#/CloudDrive') {
+          css += `
+            a[href*="${playlistId}"] .album-image { content: url(${savedCovers[playlistId]}) !important; }
+            .detail-page .cover-art[src*="cloud.png"] { content: url(${savedCovers[playlistId]}) !important; }
+          `;
+        } else if (playlistId === '#/LocalMusic') {
+          css += `a[href*="${playlistId}"] .album-image { content: url(${savedCovers[playlistId]}) !important; }
+            .detail-page .cover-art[src*="local.png"] { content: url(${savedCovers[playlistId]}) !important; }
+          `;
+        } else if(playlistId === 'add'){
+          css += `.create-playlist-button .album-image { content: url(${savedCovers[playlistId]}) !important; }`;
+        } else {
+          css += `a[href*="listid=${playlistId}"] .album-image { content: url(${savedCovers[playlistId]}) !important; }
+          .detail-page .cover-art[src$=".jpg"] { content: url(${savedCovers[playlistId]}) !important; }`;
+        }
       });
       
       if (css) {
@@ -152,15 +167,28 @@
   // 获取歌单ID
   function getPlaylistId(albumImage) {
     const card = albumImage.closest('.music-card');
-    if (card) {
-      const link = card.querySelector('a');
-      if (link) {
-        const href = link.getAttribute('href');
-        const match = href && href.match(/listid=([^&]+)/);
-        return match ? match[1] : null;
-      }
+    if (!card) return null;
+
+    // 检查是否是创建歌单按钮
+    const plusIcon = card.querySelector('i.fas.fa-plus');
+    if (plusIcon) {
+      return 'add';
     }
-    return null;
+
+    const link = card.querySelector('a');
+    if (!link) return null;
+
+    const href = link.getAttribute('href');
+    if (!href) return null;
+
+    // 检查特殊路径
+    if (href === '#/CloudDrive' || href === '#/LocalMusic') {
+      return href;
+    }
+
+    // 检查常规listid
+    const match = href.match(/listid=([^&]+)/);
+    return match ? match[1] : null;
   }
  
   // 监听页面变化
