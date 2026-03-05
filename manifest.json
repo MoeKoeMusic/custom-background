@@ -1,7 +1,12 @@
 {
   "manifest_version": 3,
   "name": "MoeKoe Custom Background",
-  "version": "1.0.0",
+  "version": "1.2.0",
+  "moekoe": true,
+  "author": {
+    "name": "MoeKoe Music",
+    "url": "https://music.moekoe.cn/"
+  },
   "description": "MoeKoe Music 自定义背景和歌单封面插件",
   "permissions": [
     "storage",
@@ -10,9 +15,15 @@
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["styles.css"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
       "run_at": "document_end"
     }
   ],

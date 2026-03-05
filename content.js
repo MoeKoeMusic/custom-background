@@ -39,8 +39,15 @@
         } else if(playlistId === 'add'){
           css += `.create-playlist-button .album-image { content: url(${savedCovers[playlistId]}) !important; }`;
         } else {
-          css += `a[href*="listid=${playlistId}"] .album-image { content: url(${savedCovers[playlistId]}) !important; }
-          .detail-page .cover-art[src$=".jpg"] { content: url(${savedCovers[playlistId]}) !important; }`;
+          css += `
+            a[href*="listid=${playlistId}&"] .album-image,
+            a[href$="listid=${playlistId}"] .album-image {
+              content: url(${savedCovers[playlistId]}) !important;
+            }
+            .detail-page .cover-art[data-playlist-id="${playlistId}"] {
+              content: url(${savedCovers[playlistId]}) !important;
+            }
+          `;
         }
       });
       
@@ -232,14 +239,4 @@
   } else {
     init();
   }
-  
-  // 监听来自popup的消息
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'clearAll') {
-      localStorage.removeItem('custom-background');
-      localStorage.removeItem('custom-covers');
-      location.reload();
-      sendResponse({ status: 'success' });
-    }
-  });
 })();
