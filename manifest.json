@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "MoeKoe Custom Background",
   "plugin_id":"custom-background",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "moekoe": true,
   "author": {
     "name": "MoeKoe Music",
