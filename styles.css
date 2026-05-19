@@ -61,6 +61,10 @@
   position: relative !important;
 }
 
+.profile-header .profile-background-image {
+  transition: opacity 0.36s ease !important;
+}
+
 .music-card {
   position: relative !important;
 }

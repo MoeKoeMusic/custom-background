@@ -70,6 +70,77 @@
       color: #856404;
       text-align: left;
     }
+
+    .setting {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background: #f8f9fa;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    .setting-title {
+      margin: 0 0 4px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .setting-desc {
+      margin: 0;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .switch {
+      position: relative;
+      width: 46px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      background: #c8cdd3;
+      border-radius: 999px;
+      transition: background 0.2s ease;
+    }
+
+    .slider::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s ease;
+    }
+
+    .switch input:checked + .slider {
+      background: #2f7df6;
+    }
+
+    .switch input:checked + .slider::before {
+      transform: translateX(20px);
+    }
     
     .footer {
       margin-top: 20px;
@@ -98,10 +169,21 @@
     <div class="tip">
       <strong>💡 提示：</strong>建议使用文件大小适中的图片以避免性能问题
     </div>
+    <div class="setting">
+      <div>
+        <p class="setting-title">虚化过渡背景(刷新生效)</p>
+        <p class="setting-desc">开启虚化渐变过渡背景效果，关闭后直接设置背景图片。</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="blur-transition-toggle" checked />
+        <span class="slider"></span>
+      </label>
+    </div>
     <div class="footer">
       <p>© 2024 MoeKoe Music Plugin</p>
-      <p>自定义背景插件 v1.2</p>
+      <p>自定义背景插件 v2</p>
     </div>
   </div>
+  <script src="popup.js"></script>
 </body>
 </html>
